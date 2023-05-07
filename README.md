@@ -1,6 +1,6 @@
 # superset-plugin-chart-tabulator
 
-This is the Tabulator table Superset Chart Plugin.
+This is an example table chart plugin for [Superset](https://superset.apache.org/). It based on [Tabulator](https://tabulator.info/) library and uses [react-tabulator](https://github.com/ngduc/react-tabulator). The plugin has been built using the [Superset Yeoman Generator](https://www.npmjs.com/package/@superset-ui/generator-superset).
 
 ### Usage
 
