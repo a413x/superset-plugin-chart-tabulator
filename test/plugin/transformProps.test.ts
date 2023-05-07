@@ -21,22 +21,16 @@ import transformProps from '../../src/plugin/transformProps';
 
 describe('SupersetPluginChartTabulator transformProps', () => {
   const formData = {
-    colorScheme: 'bnbColors',
-    datasource: '3__table',
-    granularity_sqla: 'ds',
-    metric: 'sum__num',
-    series: 'name',
-    boldText: true,
-    headerFontSize: 'xs',
-    headerText: 'my text',
+    headerFilter: true, 
+    cols: ['name'], 
+    metrics: ['sum__num'],
   };
   const chartProps = new ChartProps({
     formData,
     width: 800,
     height: 600,
-    theme: supersetTheme,
     queriesData: [{
-      data: [{ name: 'Hulk', sum__num: 1 }],
+      data: [{ name: 'Name', sum__num: 1 }],
     }],
   });
 
@@ -44,10 +38,9 @@ describe('SupersetPluginChartTabulator transformProps', () => {
     expect(transformProps(chartProps)).toEqual({
       width: 800,
       height: 600,
-      boldText: true,
-      headerFontSize: 'xs',
-      headerText: 'my text',
-      data: [{ name: 'Hulk', sum__num: 1 }],
+      headerFilter: true,
+      columnsFields: ['name', 'sum__num'],
+      data: [{ name: 'Name', sum__num: 1 }],
     });
   });
 });

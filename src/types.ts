@@ -18,19 +18,17 @@
  */
 import {
   QueryFormData,
-  supersetTheme,
   TimeseriesDataRecord,
 } from '@superset-ui/core';
 
 export interface SupersetPluginChartTabulatorStylesProps {
   height: number;
   width: number;
-  headerFontSize: keyof typeof supersetTheme.typography.sizes;
-  boldText: boolean;
 }
 
 interface SupersetPluginChartTabulatorCustomizeProps {
-  headerText: string;
+  headerFilter: boolean;
+  columnsFields: string[];
 }
 
 export type SupersetPluginChartTabulatorQueryFormData = QueryFormData &
@@ -40,5 +38,4 @@ export type SupersetPluginChartTabulatorQueryFormData = QueryFormData &
 export type SupersetPluginChartTabulatorProps = SupersetPluginChartTabulatorStylesProps &
   SupersetPluginChartTabulatorCustomizeProps & {
     data: TimeseriesDataRecord[];
-    // add typing here for the props you pass in from transformProps.ts!
   };
