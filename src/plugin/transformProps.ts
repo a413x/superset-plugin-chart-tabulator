@@ -20,14 +20,27 @@ import { ChartProps, TimeseriesDataRecord } from '@superset-ui/core';
 
 export default function transformProps(chartProps: ChartProps) {
   const { width, height, formData, queriesData } = chartProps;
-  const { headerFilter, cols, metrics } = formData;
+  const {
+    headerFilter,
+    movableRows,
+    movableColumns,
+    cols,
+    metrics,
+    selectable,
+    responsiveLayout
+  } = formData;
   const data = queriesData[0].data as TimeseriesDataRecord[];
+  const options = { movableRows, movableColumns, selectable, responsiveLayout };
+  if (responsiveLayout === "none") {
+    options.responsiveLayout = "";
+  }
 
   return {
     width,
     height,
     data,
     headerFilter,
+    options,
     columnsFields: [...cols, ...metrics]
   };
 }

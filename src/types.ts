@@ -27,6 +27,12 @@ export interface SupersetPluginChartTabulatorStylesProps {
 }
 
 interface SupersetPluginChartTabulatorCustomizeProps {
+  options: {
+    movableRows: boolean,
+    movableColumns: boolean,
+    responsiveLayout: string,
+    selectable: boolean
+  };
   headerFilter: boolean;
   columnsFields: string[];
 }

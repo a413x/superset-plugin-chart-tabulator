@@ -21,6 +21,7 @@ import {
   ControlPanelConfig,
   sections,
   sharedControls,
+  formatSelectOptions
 } from '@superset-ui/chart-controls';
 
 const config: ControlPanelConfig = {
@@ -52,12 +53,6 @@ const config: ControlPanelConfig = {
           },
         ],
         ['adhoc_filters'],
-        [
-          {
-            name: 'row_limit',
-            config: sharedControls.row_limit,
-          },
-        ],
       ],
     },
     {
@@ -69,12 +64,67 @@ const config: ControlPanelConfig = {
             name: 'header_filter',
             config: {
               type: 'CheckboxControl',
-              label: t('Add header filter'),
-              renderTrigger: true,
+              label: t('Header filter'),
               default: true,
               description: t(
                 'Add header filter to columns',
               ),
+            },
+          },
+        ],
+        [
+          {
+            name: 'movable_rows',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Movable rows'),
+              default: true,
+              description: t(
+                'Should rows be movable',
+              ),
+            },
+          },
+        ],
+        [
+          {
+            name: 'movable_columns',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Movable columns'),
+              default: true,
+              description: t(
+                'Should columns be movable',
+              ),
+            },
+          },
+        ],
+        [
+          {
+            name: 'selectable',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Selectable rows'),
+              default: false,
+              description: t(
+                'Allows to select rows',
+              ),
+            },
+          },
+        ],
+        [
+          {
+            name: 'responsive_layout',
+            config: {
+              type: 'SelectControl',
+              label: t('Responsive layout'),
+              description: t(
+                `Modes available: 
+                  "hide" - hide columns that no longer fit in the table; 
+                  "collapse" - collapse columns that no longer fit on the table into a list under the row
+                `,
+              ),
+              default: "none",
+              choices: formatSelectOptions<string>(["none", "hide", "collapse"])
             },
           },
         ],

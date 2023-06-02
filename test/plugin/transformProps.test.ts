@@ -21,8 +21,12 @@ import transformProps from '../../src/plugin/transformProps';
 
 describe('SupersetPluginChartTabulator transformProps', () => {
   const formData = {
-    headerFilter: true, 
-    cols: ['name'], 
+    headerFilter: true,
+    movableRows: false,
+    movableColumns: true,
+    selectable: false,
+    responsiveLayout: "none",
+    cols: ['name'],
     metrics: ['sum__num'],
   };
   const chartProps = new ChartProps({
@@ -39,6 +43,12 @@ describe('SupersetPluginChartTabulator transformProps', () => {
       width: 800,
       height: 600,
       headerFilter: true,
+      options: {
+        movableRows: false,
+        movableColumns: true,
+        selectable: false,
+        responsiveLayout: ""
+      },
       columnsFields: ['name', 'sum__num'],
       data: [{ name: 'Name', sum__num: 1 }],
     });

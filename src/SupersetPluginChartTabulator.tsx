@@ -22,7 +22,14 @@ import { SupersetPluginChartTabulatorProps } from './types';
 import Styles from './Styles';
 
 export default function SupersetPluginChartTabulator(props: SupersetPluginChartTabulatorProps) {
-  const { data, height, width, columnsFields, headerFilter } = props;
+  const { data, height, width, columnsFields, headerFilter, options } = props;
+
+  const tabulatorOptions = {
+    ...options,
+    pagination: "local",
+    paginationSizeSelector: [5, 10, 20, 50],
+    paginationSize: 5,
+  };
 
   const columns: any[] = columnsFields.map((field) => ({
     field,
@@ -35,7 +42,11 @@ export default function SupersetPluginChartTabulator(props: SupersetPluginChartT
       height={height}
       width={width}
     >
-      <ReactTabulator columns={columns} data={data} />
+      <ReactTabulator
+        columns={columns}
+        data={data}
+        options={tabulatorOptions}
+      />
     </Styles>
   );
 }
